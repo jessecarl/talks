@@ -1,0 +1,106 @@
+Jump in the Pool
+How and When to Pool Resources
+
+Jesse Allen
+Software Engineer, Permission Data
+@jessecarl
+
+* Do I need to pool resources?
+
+: not yet.
+: - Is the cost of the operation in question a large portion of the cost of your application or critical path?
+: - Is the cost of getting a new resource (or using an unprimed resource) a large portion of the cost for an operation?
+
+* Is this my bottleneck?
+.image reduce-reuse-recycle/geneamdahl-580x358.jpeg 358 580
+.image reduce-reuse-recycle/amdahl.svg 75 _
+
+* Okay, how do I pick a pool?
+
+: - How much time between operations?
+: - Is time or space more important?
+
+* Immediate Reuse with Limited Space
+
+* A Pool of Workers
+
+* What it looks like
+
+.code jump-in-the-pool/workers.go /START TYPE OMIT/,/END TYPE OMIT/
+
+* What it looks like (continued)
+
+.code jump-in-the-pool/workers.go /START CONSTRUCT OMIT/,/END CONSTRUCT OMIT/
+
+* Run it!
+
+.play jump-in-the-pool/workers.go /START MAIN OMIT/,/END MAIN OMIT/
+
+* Eventual Reuse with Limited Space
+
+<<free list>>
+
+* Eventual Reuse with Limited Time
+
+<<free list with default case>>
+
+* Immediate Reuse with Limited Time
+
+<<sync.Pool>>
+
+
++----------------------------------+---------------------------------+
+| high cost allocation, short life | high cost allocation, long life |
+| - compression buffer             | - network connection            |
+| - sync.Pool                      | - static free list/pool         |
+| - sugar glass                    | - waterford crystal glassware   |
++----------------------------------+---------------------------------+
+| low cost allocation, short life  | low cost allocation, long life  |
+| - byte slice buffer              | - temporary files               |
+| - garbage                        | - dynamic free list/pool        |
+| - cone paper cups                | - mason jars                    |
++----------------------------------+---------------------------------+
+
+Key questions to ask:
+- how expensive is it to allocate/free this resource?
+- how long will each use typically take?
+- how long will a resource wait until it is reused?
+- how regular is utilization?
+
+
+allocation time vs use time vs garbage time vs wait time
+
+A high ratio of allocation time to use time is a pretty good indicator that
+some recycling strategy ought to be put into place.
+
+A really high ratio of allocation time to use time may indicate that all
+resources are best allocated ahead of time as a static buffered channel style
+free list.
+
+A high ratio of wait time (time between allocations) to garbage time (time
+between garbage collections) may indicate that a sync.Pool would not give any
+advantage over nothing at all, but a buffered channel style free list might.
+
+A low ratio of wait time to garbage time (heavy use) would probably indicate
+that a sync.Pool would be appropriate.
+
+----
+
+Time vs Space
+----
+
+                +----------------------+-----------------------+
+ eventual reuse | high time, low space | high time, high space |
+                | - static free list   | - buffered free list  |
+                +----------------------+-----------------------+
+                | low time, low space  | low time, high space  |
+immediate reuse | - worker pool        | - sync.Pool           |
+                +----------------------+-----------------------+
+                 no new resources            some new resources
+
+----
+
+###Low time, low space
+
+
+
