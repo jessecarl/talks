@@ -1,0 +1,5 @@
+BenchmarkWrite/Size=2584-8	300000	255029 ns/op	756641 B/op	17 allocs/op
+PASS
+ok	github.com/PermissionData/log/graylog	79.526s
+
+210.15s user 17.35s system 228% cpu 1:39.39 total

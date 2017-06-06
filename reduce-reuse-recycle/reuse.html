@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<!-- saved from url=(0085)file:///var/folders/sj/5syy7d_j7_ndq2sy_85cb5100000gn/T/pprof-001200748/pprof001.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Pprof listing</title>
+<style type="text/css">
+body {
+font-family: sans-serif;
+}
+h1 {
+  font-size: 1.5em;
+  margin-bottom: 4px;
+}
+.legend {
+  font-size: 1.25em;
+}
+.line {
+color: #aaaaaa;
+}
+.nop {
+color: #aaaaaa;
+}
+.unimportant {
+color: #cccccc;
+}
+.disasmloc {
+color: #000000;
+}
+.deadsrc {
+cursor: pointer;
+}
+.deadsrc:hover {
+background-color: #eeeeee;
+}
+.livesrc {
+color: #0000ff;
+cursor: pointer;
+}
+.livesrc:hover {
+background-color: #eeeeee;
+}
+.asm {
+color: #008800;
+display: none;
+}
+</style>
+<script type="text/javascript">
+function pprof_toggle_asm(e) {
+  var target;
+  if (!e) e = window.event;
+  if (e.target) target = e.target;
+  else if (e.srcElement) target = e.srcElement;
+
+  if (target) {
+    var asm = target.nextSibling;
+    if (asm && asm.className == "asm") {
+      asm.style.display = (asm.style.display == "block" ? "" : "block");
+      e.preventDefault();
+      return false;
+    }
+  }
+}
+</script>
+</head>
+<body>
+
+<div class="legend">File: reuse.test<br>
+Type: cpu<br>
+Time: Mar 20, 2017 at 8:38pm (EDT)<br>
+Duration: 1m27.930941408s<br>Total: 2.54mins</div><h1>github.com/PermissionData/log/graylog.(*Client).Write</h1>/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go
+<pre onclick="pprof_toggle_asm(event)">  Total:       120ms     51.90s (flat, cum) 34.10%
+<span class="line">     62</span> <span class="nop">           .          . 	return gl, nil </span>
+<span class="line">     63</span> <span class="nop">           .          . } </span>
+<span class="line">     64</span> <span class="nop">           .          .  </span>
+<span class="line">     65</span> <span class="nop">           .          . // Write sends the contents of a byte slice over a Packet Connection with </span>
+<span class="line">     66</span> <span class="nop">           .          . // the graylog protocol. </span>
+<span class="line">     67</span> <span class="deadsrc">        10ms       10ms func (gl *Client) Write(p []byte) (int, error) { </span><span class="asm">                   .          .  1196290: GS MOVQ GS:0x8a0, CX	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:67</span>
+                   .          .  1196299: LEAQ 0xfffff9c0(SP), AX	                         <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:67</span>
+                   .          .  11962a1: CMPQ 0x10(CX), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:67</span>
+                   .          .  11962a5: JBE 0x1196cb2	                                   <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:67</span>
+                   .          .  11962ab: SUBQ $0x6c0, SP	                                 <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:67</span>
+                   .          .  11962b2: MOVQ BP, 0x6b8(SP)	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:67</span>
+                   .          .  11962ba: LEAQ 0x6b8(SP), BP	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:67</span>
+                   .          .  11962c2: MOVQ $0x0, 0x6e8(SP)	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:67</span>
+                   .          .  11962ce: MOVQ $0x0, 0x6f0(SP)	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:67</span>
+                   .          .  11962da: MOVQ $0x0, 0x6f8(SP)	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:67</span>
+                10ms       10ms  11965c6: XORL AX, AX	                                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:67</span>
+                   .          .  1196805: XORL DX, DX	                                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:67</span>
+                   .          .  1196cb2: CALL runtime.morestack_noctxt(SB)	               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:67</span>
+                   .          .  1196cb7: JMP github.com/PermissionData/log/graylog.(*Client).Write(SB)	 <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:67</span>
+                   .          .  1196cbc: INT $0x3	                                        <span class="disasmloc"></span>
+                   .          .  1196cbd: INT $0x3	                                        <span class="disasmloc"></span>
+                   .          .  1196cbe: INT $0x3	                                        <span class="disasmloc"></span>
+</span>
+<span class="line">     68</span> <span class="deadsrc">           .          . 	if len(p) == 0 { </span><span class="asm">                   .          .  11962e6: MOVQ 0x6d8(SP), AX	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:68</span>
+                   .          .  11962ee: TESTQ AX, AX	                                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:68</span>
+                   .          .  11962f1: JE 0x1196c78	                                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:68</span>
+</span>
+<span class="line">     69</span> <span class="deadsrc">           .          . 		return 0, nil </span><span class="asm">                   .          .  1196c78: MOVQ $0x0, 0x6e8(SP)	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:69</span>
+                   .          .  1196c84: MOVQ $0x0, 0x6f0(SP)	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:69</span>
+                   .          .  1196c90: MOVQ $0x0, 0x6f8(SP)	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:69</span>
+                   .          .  1196c9c: NOPL	                                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:69</span>
+                   .          .  1196c9d: CALL runtime.deferreturn(SB)	                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:69</span>
+                   .          .  1196ca2: MOVQ 0x6b8(SP), BP	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:69</span>
+                   .          .  1196caa: ADDQ $0x6c0, SP	                                 <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:69</span>
+                   .          .  1196cb1: RET	                                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:69</span>
+</span>
+<span class="line">     70</span> <span class="nop">           .          . 	} </span>
+<span class="line">     71</span> <span class="deadsrc">           .       40ms 	if !bytes.HasSuffix(p, []byte("\n")) { </span><span class="asm">                   .          .  11962f7: LEAQ 0x9c(SP), CX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:71</span>
+                   .          .  11962ff: MOVQ CX, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:71</span>
+                   .          .  1196303: LEAQ 0x8f7a7(IP), CX	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:71</span>
+                   .          .  119630a: MOVQ CX, 0x8(SP)	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:71</span>
+                   .          .  119630f: MOVQ $0x1, 0x10(SP)	                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:71</span>
+                   .       10ms  1196318: CALL runtime.stringtoslicebyte(SB)	              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:71</span>
+                   .          .  119631d: MOVQ 0x20(SP), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:71</span>
+                   .          .  1196322: MOVQ 0x18(SP), CX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:71</span>
+                   .          .  1196327: MOVQ 0x28(SP), DX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:71</span>
+                   .          .  119632c: MOVQ 0x6d0(SP), BX	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:71</span>
+                   .          .  1196334: MOVQ BX, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:71</span>
+                   .          .  1196338: MOVQ 0x6d8(SP), SI	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:71</span>
+                   .          .  1196340: MOVQ SI, 0x8(SP)	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:71</span>
+                   .          .  1196345: MOVQ 0x6e0(SP), DI	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:71</span>
+                   .          .  119634d: MOVQ DI, 0x10(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:71</span>
+                   .          .  1196352: MOVQ CX, 0x18(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:71</span>
+                   .          .  1196357: MOVQ AX, 0x20(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:71</span>
+                   .          .  119635c: MOVQ DX, 0x28(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:71</span>
+                   .       30ms  1196361: CALL bytes.HasSuffix(SB)	                        <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:71</span>
+                   .          .  1196366: MOVZX 0x30(SP), AX	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:71</span>
+                   .          .  119636b: TESTL AL, AL	                                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:71</span>
+                   .          .  119636d: JE 0x1196c38	                                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:71</span>
+</span>
+<span class="line">     72</span> <span class="deadsrc">           .          . 		return 0, ErrMissingNewline </span><span class="asm">                   .          .  1196c38: MOVQ $0x0, 0x6e8(SP)	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:72</span>
+                   .          .  1196c44: MOVQ 0x19270d(IP), AX	                           <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:72</span>
+                   .          .  1196c4b: MOVQ 0x1926fe(IP), CX	                           <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:72</span>
+                   .          .  1196c52: MOVQ CX, 0x6f0(SP)	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:72</span>
+                   .          .  1196c5a: MOVQ AX, 0x6f8(SP)	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:72</span>
+                   .          .  1196c62: NOPL	                                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:72</span>
+                   .          .  1196c63: CALL runtime.deferreturn(SB)	                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:72</span>
+                   .          .  1196c68: MOVQ 0x6b8(SP), BP	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:72</span>
+                   .          .  1196c70: ADDQ $0x6c0, SP	                                 <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:72</span>
+                   .          .  1196c77: RET	                                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:72</span>
+</span>
+<span class="line">     73</span> <span class="nop">           .          . 	} </span>
+<span class="line">     74</span> <span class="nop">           .          .  </span>
+<span class="line">     75</span> <span class="deadsrc">           .      150ms 	gl.writeMux.Lock() </span><span class="asm">                   .          .  1196373: MOVQ 0x6c8(SP), AX	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:75</span>
+                   .          .  119637b: TESTB AL, 0(AX)	                                 <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:75</span>
+                   .          .  119637d: LEAQ 0x34(AX), CX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:75</span>
+                   .          .  1196381: MOVQ CX, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:75</span>
+                   .      150ms  1196385: CALL sync.(*Mutex).Lock(SB)	                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:75</span>
+</span>
+<span class="line">     76</span> <span class="nop">           .          . 	defer func() { </span>
+<span class="line">     77</span> <span class="nop">           .          . 		gl.buf.Reset() </span>
+<span class="line">     78</span> <span class="nop">           .          . 		gl.zip.Reset(&amp;gl.buf) </span>
+<span class="line">     79</span> <span class="nop">           .          . 		gl.writeMux.Unlock() </span>
+<span class="line">     80</span> <span class="deadsrc">           .       40ms 	}() </span><span class="asm">                   .          .  119638a: MOVQ 0x6c8(SP), AX	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:80</span>
+                   .          .  1196392: MOVQ AX, 0x10(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:80</span>
+                   .          .  1196397: MOVL $0x8, 0(SP)	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:80</span>
+                   .          .  119639e: LEAQ 0x9bb3b(IP), CX	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:80</span>
+                   .          .  11963a5: MOVQ CX, 0x8(SP)	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:80</span>
+                   .       40ms  11963aa: CALL runtime.deferproc(SB)	                      <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:80</span>
+                   .          .  11963af: TESTL AX, AX	                                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:80</span>
+                   .          .  11963b1: JNE 0x1196c22	                                   <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:80</span>
+                   .          .  1196c22: NOPL	                                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:80</span>
+                   .          .  1196c23: CALL runtime.deferreturn(SB)	                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:80</span>
+                   .          .  1196c28: MOVQ 0x6b8(SP), BP	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:80</span>
+                   .          .  1196c30: ADDQ $0x6c0, SP	                                 <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:80</span>
+                   .          .  1196c37: RET	                                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:80</span>
+</span>
+<span class="line">     81</span> <span class="deadsrc">        10ms      4.11s 	n, err := gl.zip.Write(bytes.TrimFunc(p, unicode.IsSpace)) </span><span class="asm">                   .          .  11963b7: MOVQ 0x6d0(SP), AX	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:81</span>
+                   .          .  11963bf: MOVQ AX, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:81</span>
+                10ms       10ms  11963c3: MOVQ 0x6d8(SP), AX	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:81</span>
+                   .          .  11963cb: MOVQ AX, 0x8(SP)	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:81</span>
+                   .          .  11963d0: MOVQ 0x6e0(SP), AX	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:81</span>
+                   .          .  11963d8: MOVQ AX, 0x10(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:81</span>
+                   .          .  11963dd: LEAQ 0x9c41c(IP), AX	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:81</span>
+                   .          .  11963e4: MOVQ AX, 0x18(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:81</span>
+                   .       30ms  11963e9: CALL bytes.TrimFunc(SB)	                         <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:81</span>
+                   .          .  11963ee: MOVQ 0x6c8(SP), AX	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:81</span>
+                   .          .  11963f6: MOVQ 0x40(AX), CX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:81</span>
+                   .          .  11963fa: MOVQ 0x30(SP), DX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:81</span>
+                   .          .  11963ff: MOVQ 0x28(SP), BX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:81</span>
+                   .          .  1196404: MOVQ 0x20(SP), SI	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:81</span>
+                   .          .  1196409: MOVQ CX, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:81</span>
+                   .          .  119640d: MOVQ SI, 0x8(SP)	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:81</span>
+                   .          .  1196412: MOVQ BX, 0x10(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:81</span>
+                   .          .  1196417: MOVQ DX, 0x18(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:81</span>
+                   .      4.07s  119641c: CALL compress/gzip.(*Writer).Write(SB)	          <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:81</span>
+                   .          .  1196421: MOVQ 0x20(SP), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:81</span>
+                   .          .  1196426: MOVQ AX, 0x58(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:81</span>
+                   .          .  119642b: MOVQ 0x30(SP), CX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:81</span>
+                   .          .  1196430: MOVQ CX, 0x660(SP)	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:81</span>
+                   .          .  1196438: MOVQ 0x28(SP), DX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:81</span>
+                   .          .  119643d: MOVQ DX, 0x658(SP)	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:81</span>
+</span>
+<span class="line">     82</span> <span class="deadsrc">           .      570ms 	gl.zip.Close() </span><span class="asm">                   .          .  1196445: MOVQ 0x6c8(SP), BX	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:82</span>
+                   .          .  119644d: MOVQ 0x40(BX), SI	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:82</span>
+                   .          .  1196451: MOVQ SI, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:82</span>
+                   .      570ms  1196455: CALL compress/gzip.(*Writer).Close(SB)	          <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:82</span>
+</span>
+<span class="line">     83</span> <span class="deadsrc">        10ms       10ms 	if err != nil &amp;&amp; err != io.EOF { </span><span class="asm">                   .          .  119645a: MOVQ 0x658(SP), AX	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:83</span>
+                10ms       10ms  1196462: TESTQ AX, AX	                                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:83</span>
+                   .          .  1196465: JE 0x11964ec	                                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:83</span>
+                   .          .  119646b: MOVQ 0x192f4e(IP), CX	                           <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:83</span>
+                   .          .  1196472: CMPQ CX, AX	                                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:83</span>
+                   .          .  1196475: JE 0x11964b1	                                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:83</span>
+                   .          .  11964b1: MOVQ AX, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:83</span>
+                   .          .  11964b5: MOVQ 0x660(SP), CX	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:83</span>
+                   .          .  11964bd: MOVQ CX, 0x8(SP)	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:83</span>
+                   .          .  11964c2: MOVQ 0x192ef7(IP), DX	                           <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:83</span>
+                   .          .  11964c9: MOVQ 0x192ef8(IP), BX	                           <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:83</span>
+                   .          .  11964d0: MOVQ DX, 0x10(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:83</span>
+                   .          .  11964d5: MOVQ BX, 0x18(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:83</span>
+                   .          .  11964da: CALL runtime.ifaceeq(SB)	                        <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:83</span>
+                   .          .  11964df: MOVZX 0x20(SP), AX	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:83</span>
+                   .          .  11964e4: TESTL AL, AL	                                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:83</span>
+                   .          .  11964e6: JE 0x1196c15	                                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:83</span>
+</span>
+<span class="line">     84</span> <span class="deadsrc">           .          . 		return 0, err </span><span class="asm">                   .          .  1196477: MOVQ $0x0, 0x6e8(SP)	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:84</span>
+                   .          .  1196483: MOVQ AX, 0x6f0(SP)	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:84</span>
+                   .          .  119648b: MOVQ 0x660(SP), AX	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:84</span>
+                   .          .  1196493: MOVQ AX, 0x6f8(SP)	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:84</span>
+                   .          .  119649b: NOPL	                                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:84</span>
+                   .          .  119649c: CALL runtime.deferreturn(SB)	                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:84</span>
+                   .          .  11964a1: MOVQ 0x6b8(SP), BP	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:84</span>
+                   .          .  11964a9: ADDQ $0x6c0, SP	                                 <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:84</span>
+                   .          .  11964b0: RET	                                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:84</span>
+                   .          .  1196c15: MOVQ 0x658(SP), AX	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:84</span>
+                   .          .  1196c1d: JMP 0x1196477	                                   <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:84</span>
+</span>
+<span class="line">     85</span> <span class="nop">           .          . 	} </span>
+<span class="line">     86</span> <span class="nop">           .          .  </span>
+<span class="line">     87</span> <span class="deadsrc">        10ms       10ms 	length := gl.buf.Len() </span><span class="asm">                   .          .  11964ec: MOVQ 0x6c8(SP), CX	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:87</span>
+                10ms       10ms  11964f4: LEAQ 0x48(CX), DX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:87</span>
+                   .          .  11964f8: MOVQ DX, 0x670(SP)	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:87</span>
+                   .          .  1196500: TESTB AL, 0(DX)	                                 <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:87</span>
+                   .          .  1196502: MOVQ 0x60(CX), BX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:87</span>
+                   .          .  1196506: MOVQ 0x50(CX), SI	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:87</span>
+                   .          .  119650a: SUBQ BX, SI	                                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:87</span>
+                   .          .  1196517: MOVQ DX, BX	                                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:87</span>
+</span>
+<span class="line">     88</span> <span class="deadsrc">           .          . 	count, rem := length/maxChunkSize, length%maxChunkSize </span><span class="asm">                   .          .  119650d: MOVQ $0xb89bc36ce3e0453b, AX	                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:88</span>
+                   .          .  119651a: IMULQ SI	                                        <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:88</span>
+                   .          .  119651d: ADDQ SI, DX	                                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:88</span>
+                   .          .  1196520: SARQ $0xa, DX	                                   <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:88</span>
+                   .          .  1196524: MOVQ SI, DI	                                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:88</span>
+                   .          .  1196527: SARQ $0x3f, SI	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:88</span>
+                   .          .  119652b: SUBQ SI, DX	                                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:88</span>
+                   .          .  119652e: MOVQ DX, SI	                                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:88</span>
+                   .          .  1196531: IMULQ $0x58c, DX, DX	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:88</span>
+                   .          .  1196538: MOVQ DI, R8	                                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:88</span>
+                   .          .  119653b: SUBQ DX, DI	                                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:88</span>
+</span>
+<span class="line">     89</span> <span class="deadsrc">           .          . 	if rem &gt; 0 { </span><span class="asm">                   .          .  119653e: TESTQ DI, DI	                                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:89</span>
+                   .          .  1196541: JLE 0x1196c0d	                                   <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:89</span>
+</span>
+<span class="line">     90</span> <span class="deadsrc">           .          . 		count++ </span><span class="asm">                   .          .  1196547: LEAQ 0x1(SI), AX	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:90</span>
+</span>
+<span class="line">     91</span> <span class="nop">           .          . 	} </span>
+<span class="line">     92</span> <span class="nop">           .          .  </span>
+<span class="line">     93</span> <span class="deadsrc">           .          . 	if count &gt; maxChunkCount { </span><span class="asm">                   .          .  119654b: MOVQ AX, 0x70(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:93</span>
+                   .          .  1196550: CMPQ $0x80, AX	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:93</span>
+                   .          .  1196556: JG 0x1196ae7	                                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:93</span>
+                   .          .  1196c0d: MOVQ SI, AX	                                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:93</span>
+                   .          .  1196c10: JMP 0x119654b	                                   <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:93</span>
+</span>
+<span class="line">     94</span> <span class="deadsrc">           .          . 		return 0, fmt.Errorf("message exceeds maximum size, %d &gt; %d", length, maxChunkCount*maxChunkSize) </span><span class="asm">                   .          .  1196ae7: MOVQ R8, 0x90(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196aef: MOVQ $0x2c600, 0x88(SP)	                         <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196afb: MOVQ $0x0, 0x698(SP)	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196b07: MOVQ $0x0, 0x6a0(SP)	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196b13: MOVQ $0x0, 0x6a8(SP)	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196b1f: MOVQ $0x0, 0x6b0(SP)	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196b2b: LEAQ 0x42eae(IP), AX	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196b32: MOVQ AX, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196b36: LEAQ 0x90(SP), CX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196b3e: MOVQ CX, 0x8(SP)	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196b43: CALL runtime.convT2E(SB)	                        <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196b48: MOVQ 0x18(SP), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196b4d: MOVQ 0x10(SP), CX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196b52: MOVQ CX, 0x698(SP)	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196b5a: MOVQ AX, 0x6a0(SP)	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196b62: LEAQ 0x42e77(IP), AX	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196b69: MOVQ AX, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196b6d: LEAQ 0x88(SP), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196b75: MOVQ AX, 0x8(SP)	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196b7a: CALL runtime.convT2E(SB)	                        <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196b7f: MOVQ 0x18(SP), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196b84: MOVQ 0x10(SP), CX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196b89: MOVQ CX, 0x6a8(SP)	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196b91: MOVQ AX, 0x6b0(SP)	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196b99: LEAQ 0x97bc2(IP), AX	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196ba0: MOVQ AX, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196ba4: MOVQ $0x25, 0x8(SP)	                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196bad: LEAQ 0x698(SP), AX	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196bb5: MOVQ AX, 0x10(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196bba: MOVQ $0x2, 0x18(SP)	                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196bc3: MOVQ $0x2, 0x20(SP)	                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196bcc: CALL fmt.Errorf(SB)	                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196bd1: MOVQ 0x30(SP), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196bd6: MOVQ 0x28(SP), CX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196bdb: MOVQ $0x0, 0x6e8(SP)	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196be7: MOVQ CX, 0x6f0(SP)	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196bef: MOVQ AX, 0x6f8(SP)	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196bf7: NOPL	                                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196bf8: CALL runtime.deferreturn(SB)	                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196bfd: MOVQ 0x6b8(SP), BP	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196c05: ADDQ $0x6c0, SP	                                 <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+                   .          .  1196c0c: RET	                                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:94</span>
+</span>
+<span class="line">     95</span> <span class="nop">           .          . 	} </span>
+<span class="line">     96</span> <span class="nop">           .          .  </span>
+<span class="line">     97</span> <span class="deadsrc">           .       90ms 	id := gl.messageID() </span><span class="asm">                   .          .  119655c: MOVQ CX, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:97</span>
+                   .       90ms  1196560: CALL github.com/PermissionData/log/graylog.(*Client).messageID(SB)	 <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:97</span>
+                   .          .  1196565: MOVQ 0x8(SP), AX	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:97</span>
+                   .          .  119656a: MOVQ AX, 0x60(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:97</span>
+                   .          .  119662b: LEAQ 0x60(SP), R8	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:97</span>
+</span>
+<span class="line">     98</span> <span class="deadsrc">        10ms      1.36s 	packet := make([]byte, 0, mtuSize) </span><span class="asm">                   .          .  119656f: LEAQ 0x43e2a(IP), AX	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:98</span>
+                   .          .  1196576: MOVQ AX, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:98</span>
+                   .          .  119657a: MOVQ $0x0, 0x8(SP)	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:98</span>
+                   .          .  1196583: MOVQ $0x5dc, 0x10(SP)	                           <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:98</span>
+                   .      1.35s  119658c: CALL runtime.makeslice(SB)	                      <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:98</span>
+                10ms       10ms  1196591: MOVQ 0x18(SP), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:98</span>
+                   .          .  1196596: MOVQ 0x28(SP), CX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:98</span>
+                   .          .  119659b: MOVQ 0x20(SP), DX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:98</span>
+                   .          .  11965b4: MOVQ CX, BX	                                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:98</span>
+                   .          .  11965be: MOVQ AX, SI	                                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:98</span>
+                   .          .  11968b5: LEAQ 0x43ae4(IP), SI	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:98</span>
+                   .          .  1196a17: LEAQ 0x43982(IP), R8	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:98</span>
+</span>
+<span class="line">     99</span> <span class="deadsrc">        30ms       30ms 	chunk := make([]byte, maxChunkSize) </span><span class="asm">                   .          .  11965a0: MOVQ $0x0, 0xbc(SP)	                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:99</span>
+                   .          .  11965ac: LEAQ 0xc0(SP), DI	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:99</span>
+                   .          .  11965b7: MOVQ $0xb1, CX	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:99</span>
+                   .          .  11965c1: XORL AX, AX	                                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:99</span>
+                30ms       30ms  11965c3: REP STOSQ AX, ES:0(DI)	                          <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:99</span>
+                   .          .  1196694: LEAQ 0xbc(SP), R8	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:99</span>
+                   .          .  1196779: LEAQ 0xbc(SP), CX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:99</span>
+</span>
+<span class="line">    100</span> <span class="deadsrc">           .          . 	for i := 0; i &lt; count; i++ { </span><span class="asm">                   .          .  11965c8: MOVQ AX, 0x68(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:100</span>
+                   .          .  11965d2: MOVQ 0x70(SP), CX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:100</span>
+                   .          .  11965d7: CMPQ CX, AX	                                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:100</span>
+                   .          .  11965da: JGE 0x1196aac	                                   <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:100</span>
+                   .          .  11967ef: MOVQ 0x68(SP), CX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:100</span>
+                   .          .  11967f4: LEAQ 0x1(CX), AX	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:100</span>
+                   .          .  1196807: JMP 0x11965c8	                                   <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:100</span>
+</span>
+<span class="line">    101</span> <span class="deadsrc">           .          . 		packet = append(packet, gelfMagicByteA, gelfMagicByteB) // magic GELF bytes </span><span class="asm">                   .          .  11965cd: MOVQ DX, 0x48(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:101</span>
+                   .          .  11965e0: LEAQ 0x2(DX), DI	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:101</span>
+                   .          .  11965e4: CMPQ BX, DI	                                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:101</span>
+                   .          .  11965e7: JG 0x1196a61	                                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:101</span>
+                   .          .  11965ed: MOVQ DI, 0x48(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:101</span>
+                   .          .  11965f2: MOVW $0xf1e, 0(SI)(DX*1)	                        <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:101</span>
+                   .          .  11967f8: MOVQ 0x648(SP), SI	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:101</span>
+                   .          .  1196800: MOVQ 0x50(SP), BX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:101</span>
+                   .          .  1196a61: LEAQ 0x43938(IP), R8	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:101</span>
+                   .          .  1196a68: MOVQ R8, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:101</span>
+                   .          .  1196a6c: MOVQ SI, 0x8(SP)	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:101</span>
+                   .          .  1196a71: MOVQ DX, 0x10(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:101</span>
+                   .          .  1196a76: MOVQ BX, 0x18(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:101</span>
+                   .          .  1196a7b: MOVQ DI, 0x20(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:101</span>
+                   .          .  1196a80: CALL runtime.growslice(SB)	                      <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:101</span>
+                   .          .  1196a85: MOVQ 0x28(SP), SI	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:101</span>
+                   .          .  1196a8a: MOVQ 0x30(SP), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:101</span>
+                   .          .  1196a8f: MOVQ 0x38(SP), BX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:101</span>
+                   .          .  1196a94: LEAQ 0x2(AX), DI	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:101</span>
+                   .          .  1196aa2: MOVQ 0x48(SP), DX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:101</span>
+                   .          .  1196aa7: JMP 0x11965ed	                                   <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:101</span>
+</span>
+<span class="line">    102</span> <span class="deadsrc">           .       10ms 		packet = append(packet, id[0:8]...) </span><span class="asm">                   .          .  11965f8: LEAQ 0x8(DI), DX	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:102</span>
+                   .          .  11965fc: MOVQ DX, 0x80(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:102</span>
+                   .          .  1196604: CMPQ BX, DX	                                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:102</span>
+                   .          .  1196607: JA 0x1196a17	                                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:102</span>
+                   .          .  119660d: MOVQ BX, 0x50(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:102</span>
+                   .          .  1196612: MOVQ SI, 0x648(SP)	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:102</span>
+                   .          .  119661a: CMPQ BX, DX	                                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:102</span>
+                   .          .  119661d: JA 0x1196a10	                                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:102</span>
+                   .          .  1196623: LEAQ 0(DI)(SI*1), R8	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:102</span>
+                   .          .  1196627: MOVQ R8, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:102</span>
+                   .          .  1196630: MOVQ R8, 0x8(SP)	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:102</span>
+                   .          .  1196635: MOVQ $0x8, 0x10(SP)	                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:102</span>
+                   .       10ms  119663e: CALL runtime.memmove(SB)	                        <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:102</span>
+                   .          .  1196a10: CALL runtime.panicslice(SB)	                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:102</span>
+                   .          .  1196a15: UD2	                                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:102</span>
+                   .          .  1196a1e: MOVQ R8, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:102</span>
+                   .          .  1196a22: MOVQ SI, 0x8(SP)	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:102</span>
+                   .          .  1196a27: MOVQ DI, 0x10(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:102</span>
+                   .          .  1196a2c: MOVQ BX, 0x18(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:102</span>
+                   .          .  1196a31: MOVQ DX, 0x20(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:102</span>
+                   .          .  1196a36: CALL runtime.growslice(SB)	                      <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:102</span>
+                   .          .  1196a3b: MOVQ 0x28(SP), SI	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:102</span>
+                   .          .  1196a40: MOVQ 0x38(SP), BX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:102</span>
+                   .          .  1196a4f: MOVQ 0x80(SP), DX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:102</span>
+                   .          .  1196a57: MOVQ 0x48(SP), DI	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:102</span>
+                   .          .  1196a5c: JMP 0x119660d	                                   <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:102</span>
+</span>
+<span class="line">    103</span> <span class="deadsrc">        20ms       20ms 		packet = append(packet, uint8(i), uint8(count)) // sequence </span><span class="asm">                   .          .  1196643: MOVQ 0x48(SP), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  1196648: LEAQ 0xa(AX), CX	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  119664c: MOVQ 0x50(SP), DX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  1196651: CMPQ DX, CX	                                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  1196654: JG 0x11969bf	                                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  119665a: MOVQ 0x648(SP), BX	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  1196662: MOVQ BX, 0x648(SP)	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  119666a: MOVQ CX, 0x48(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  119666f: MOVQ DX, 0x50(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  1196674: MOVQ 0x68(SP), SI	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  1196679: MOVB SI, 0x8(BX)(AX*1)	                          <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                20ms       20ms  119667e: MOVQ 0x70(SP), DI	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  1196683: MOVB DI, 0x9(BX)(AX*1)	                          <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  11969bf: LEAQ 0x439da(IP), BX	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  11969c6: MOVQ BX, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  11969ca: MOVQ 0x648(SP), BX	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  11969d2: MOVQ BX, 0x8(SP)	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  11969d7: MOVQ 0x80(SP), BX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  11969df: MOVQ BX, 0x10(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  11969e4: MOVQ DX, 0x18(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  11969e9: MOVQ CX, 0x20(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  11969ee: CALL runtime.growslice(SB)	                      <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  11969f3: MOVQ 0x28(SP), BX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  11969f8: MOVQ 0x30(SP), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  11969fd: MOVQ 0x38(SP), DX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  1196a02: LEAQ 0x2(AX), CX	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  1196a06: MOVQ 0x48(SP), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  1196a0b: JMP 0x1196662	                                   <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  1196a45: MOVQ 0x68(SP), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  1196a4a: MOVQ 0x70(SP), CX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  1196a98: MOVQ 0x68(SP), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+                   .          .  1196a9d: MOVQ 0x70(SP), CX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:103</span>
+</span>
+<span class="line">    104</span> <span class="nop">           .          .  </span>
+<span class="line">    105</span> <span class="deadsrc">        10ms      500ms 		chunkSize, err := gl.buf.Read(chunk) </span><span class="asm">                   .          .  1196688: MOVQ 0x670(SP), AX	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:105</span>
+                   .          .  1196690: MOVQ AX, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:105</span>
+                   .          .  119669c: MOVQ R8, 0x8(SP)	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:105</span>
+                   .          .  11966a1: MOVQ $0x58c, 0x10(SP)	                           <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:105</span>
+                   .          .  11966aa: MOVQ $0x58c, 0x18(SP)	                           <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:105</span>
+                   .      490ms  11966b3: CALL bytes.(*Buffer).Read(SB)	                   <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:105</span>
+                   .          .  11966b8: MOVQ 0x28(SP), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:105</span>
+                   .          .  11966bd: MOVQ AX, 0x650(SP)	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:105</span>
+                10ms       10ms  11966c5: MOVQ 0x20(SP), CX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:105</span>
+                   .          .  11966ca: MOVQ CX, 0x78(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:105</span>
+                   .          .  11966cf: MOVQ 0x30(SP), DX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:105</span>
+                   .          .  11966d4: MOVQ DX, 0x668(SP)	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:105</span>
+</span>
+<span class="line">    106</span> <span class="deadsrc">           .          . 		if err != nil &amp;&amp; err != io.EOF { </span><span class="asm">                   .          .  11966dc: TESTQ AX, AX	                                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:106</span>
+                   .          .  11966df: JE 0x1196724	                                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:106</span>
+                   .          .  11966e1: MOVQ 0x192cd8(IP), BX	                           <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:106</span>
+                   .          .  11966e8: CMPQ BX, AX	                                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:106</span>
+                   .          .  11966eb: JNE 0x11969b7	                                   <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:106</span>
+                   .          .  11966f1: MOVQ AX, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:106</span>
+                   .          .  11966f5: MOVQ DX, 0x8(SP)	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:106</span>
+                   .          .  11966fa: MOVQ 0x192cbf(IP), BX	                           <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:106</span>
+                   .          .  1196701: MOVQ 0x192cc0(IP), SI	                           <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:106</span>
+                   .          .  1196708: MOVQ BX, 0x10(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:106</span>
+                   .          .  119670d: MOVQ SI, 0x18(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:106</span>
+                   .          .  1196712: CALL runtime.ifaceeq(SB)	                        <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:106</span>
+                   .          .  1196717: MOVZX 0x20(SP), AX	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:106</span>
+                   .          .  119671c: TESTL AL, AL	                                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:106</span>
+                   .          .  119671e: JE 0x1196902	                                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:106</span>
+                   .          .  1196902: MOVQ 0x650(SP), AX	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:106</span>
+                   .          .  119690a: TESTQ AX, AX	                                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:106</span>
+                   .          .  11969b7: TESTQ AX, AX	                                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:106</span>
+</span>
+<span class="line">    107</span> <span class="deadsrc">           .          . 			return 0, fmt.Errorf("reading into chunked response payload: %+v", err) </span><span class="asm">                   .          .  119690d: JE 0x1196913	                                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:107</span>
+                   .          .  119690f: MOVQ 0x8(AX), AX	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:107</span>
+                   .          .  1196913: MOVQ $0x0, 0x688(SP)	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:107</span>
+                   .          .  119691f: MOVQ $0x0, 0x690(SP)	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:107</span>
+                   .          .  119692b: MOVQ AX, 0x688(SP)	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:107</span>
+                   .          .  1196933: MOVQ 0x668(SP), AX	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:107</span>
+                   .          .  119693b: MOVQ AX, 0x690(SP)	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:107</span>
+                   .          .  1196943: LEAQ 0x98df2(IP), AX	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:107</span>
+                   .          .  119694a: MOVQ AX, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:107</span>
+                   .          .  119694e: MOVQ $0x2a, 0x8(SP)	                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:107</span>
+                   .          .  1196957: LEAQ 0x688(SP), AX	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:107</span>
+                   .          .  119695f: MOVQ AX, 0x10(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:107</span>
+                   .          .  1196964: MOVQ $0x1, 0x18(SP)	                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:107</span>
+                   .          .  119696d: MOVQ $0x1, 0x20(SP)	                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:107</span>
+                   .          .  1196976: CALL fmt.Errorf(SB)	                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:107</span>
+                   .          .  119697b: MOVQ 0x28(SP), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:107</span>
+                   .          .  1196980: MOVQ 0x30(SP), CX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:107</span>
+                   .          .  1196985: MOVQ $0x0, 0x6e8(SP)	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:107</span>
+                   .          .  1196991: MOVQ AX, 0x6f0(SP)	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:107</span>
+                   .          .  1196999: MOVQ CX, 0x6f8(SP)	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:107</span>
+                   .          .  11969a1: NOPL	                                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:107</span>
+                   .          .  11969a2: CALL runtime.deferreturn(SB)	                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:107</span>
+                   .          .  11969a7: MOVQ 0x6b8(SP), BP	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:107</span>
+                   .          .  11969af: ADDQ $0x6c0, SP	                                 <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:107</span>
+                   .          .  11969b6: RET	                                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:107</span>
+                   .          .  11969ba: JMP 0x119690d	                                   <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:107</span>
+</span>
+<span class="line">    108</span> <span class="nop">           .          . 		} </span>
+<span class="line">    109</span> <span class="deadsrc">           .      250ms 		packet = append(packet, chunk[:chunkSize]...) </span><span class="asm">                   .          .  1196724: MOVQ 0x78(SP), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  1196729: CMPQ $0x58c, AX	                                 <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  119672f: JA 0x11968ae	                                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  1196735: MOVQ 0x48(SP), CX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  119673a: LEAQ 0(CX)(AX*1), DX	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  119673e: MOVQ DX, 0x80(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  1196746: MOVQ 0x50(SP), BX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  119674b: CMPQ BX, DX	                                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  119674e: JA 0x11968b5	                                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  1196754: MOVQ 0x648(SP), SI	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  119675c: MOVQ SI, 0x648(SP)	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  1196764: MOVQ BX, 0x50(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  1196769: CMPQ BX, DX	                                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  119676c: JA 0x11968ae	                                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  1196772: ADDQ SI, CX	                                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  1196775: MOVQ CX, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  1196781: MOVQ CX, 0x8(SP)	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  1196786: MOVQ AX, 0x10(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .      250ms  119678b: CALL runtime.memmove(SB)	                        <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  11968ae: CALL runtime.panicslice(SB)	                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  11968b3: UD2	                                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  11968bc: MOVQ SI, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  11968c0: MOVQ 0x648(SP), DI	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  11968c8: MOVQ DI, 0x8(SP)	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  11968cd: MOVQ CX, 0x10(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  11968d2: MOVQ BX, 0x18(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  11968d7: MOVQ DX, 0x20(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  11968dc: CALL runtime.growslice(SB)	                      <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  11968e1: MOVQ 0x28(SP), SI	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  11968e6: MOVQ 0x38(SP), BX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  11968eb: MOVQ 0x78(SP), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  11968f0: MOVQ 0x48(SP), CX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  11968f5: MOVQ 0x80(SP), DX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+                   .          .  11968fd: JMP 0x119675c	                                   <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:109</span>
+</span>
+<span class="line">    110</span> <span class="nop">           .          .  </span>
+<span class="line">    111</span> <span class="deadsrc">           .       20ms 		if _, err := gl.conn.WriteTo(packet, gl.addr); err != nil { </span><span class="asm">                   .          .  1196790: MOVQ 0x6c8(SP), AX	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:111</span>
+                   .          .  1196798: MOVQ 0x18(AX), CX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:111</span>
+                   .          .  119679c: MOVQ 0x50(CX), CX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:111</span>
+                   .          .  11967a0: MOVQ 0x20(AX), DX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:111</span>
+                   .          .  11967a4: MOVQ 0x8(AX), BX	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:111</span>
+                   .          .  11967a8: MOVQ 0x10(AX), SI	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:111</span>
+                   .          .  11967ac: MOVQ BX, 0x20(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:111</span>
+                   .          .  11967b1: MOVQ SI, 0x28(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:111</span>
+                   .          .  11967b6: MOVQ 0x648(SP), BX	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:111</span>
+                   .          .  11967be: MOVQ BX, 0x8(SP)	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:111</span>
+                   .          .  11967c3: MOVQ 0x80(SP), SI	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:111</span>
+                   .          .  11967cb: MOVQ SI, 0x10(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:111</span>
+                   .          .  11967d0: MOVQ 0x50(SP), SI	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:111</span>
+                   .          .  11967d5: MOVQ SI, 0x18(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:111</span>
+                   .          .  11967da: MOVQ DX, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:111</span>
+                   .       20ms  11967de: CALL CX	                                         <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:111</span>
+                   .          .  11967e0: MOVQ 0x38(SP), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:111</span>
+                   .          .  11967e5: MOVQ 0x40(SP), CX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:111</span>
+                   .          .  11967ea: TESTQ AX, AX	                                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:111</span>
+                   .          .  11967ed: JNE 0x119680c	                                   <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:111</span>
+</span>
+<span class="line">    112</span> <span class="deadsrc">           .          . 			return 0, fmt.Errorf("writing to udp connection: %+v", err) </span><span class="asm">                   .          .  119680c: JE 0x1196812	                                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:112</span>
+                   .          .  119680e: MOVQ 0x8(AX), AX	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:112</span>
+                   .          .  1196812: MOVQ $0x0, 0x678(SP)	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:112</span>
+                   .          .  119681e: MOVQ $0x0, 0x680(SP)	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:112</span>
+                   .          .  119682a: MOVQ AX, 0x678(SP)	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:112</span>
+                   .          .  1196832: MOVQ CX, 0x680(SP)	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:112</span>
+                   .          .  119683a: LEAQ 0x9610f(IP), AX	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:112</span>
+                   .          .  1196841: MOVQ AX, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:112</span>
+                   .          .  1196845: MOVQ $0x1e, 0x8(SP)	                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:112</span>
+                   .          .  119684e: LEAQ 0x678(SP), AX	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:112</span>
+                   .          .  1196856: MOVQ AX, 0x10(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:112</span>
+                   .          .  119685b: MOVQ $0x1, 0x18(SP)	                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:112</span>
+                   .          .  1196864: MOVQ $0x1, 0x20(SP)	                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:112</span>
+                   .          .  119686d: CALL fmt.Errorf(SB)	                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:112</span>
+                   .          .  1196872: MOVQ 0x28(SP), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:112</span>
+                   .          .  1196877: MOVQ 0x30(SP), CX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:112</span>
+                   .          .  119687c: MOVQ $0x0, 0x6e8(SP)	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:112</span>
+                   .          .  1196888: MOVQ AX, 0x6f0(SP)	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:112</span>
+                   .          .  1196890: MOVQ CX, 0x6f8(SP)	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:112</span>
+                   .          .  1196898: NOPL	                                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:112</span>
+                   .          .  1196899: CALL runtime.deferreturn(SB)	                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:112</span>
+                   .          .  119689e: MOVQ 0x6b8(SP), BP	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:112</span>
+                   .          .  11968a6: ADDQ $0x6c0, SP	                                 <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:112</span>
+                   .          .  11968ad: RET	                                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:112</span>
+</span>
+<span class="line">    113</span> <span class="nop">           .          . 		} </span>
+<span class="line">    114</span> <span class="nop">           .          .  </span>
+<span class="line">    115</span> <span class="nop">           .          . 		packet = packet[:0] </span>
+<span class="line">    116</span> <span class="nop">           .          . 		chunk = chunk[:maxChunkSize] </span>
+<span class="line">    117</span> <span class="nop">           .          . 	} </span>
+<span class="line">    118</span> <span class="nop">           .          .  </span>
+<span class="line">    119</span> <span class="deadsrc">        10ms     44.68s 	return n, nil </span><span class="asm">                10ms       10ms  1196aac: MOVQ 0x58(SP), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:119</span>
+                   .          .  1196ab1: MOVQ AX, 0x6e8(SP)	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:119</span>
+                   .          .  1196ab9: MOVQ $0x0, 0x6f0(SP)	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:119</span>
+                   .          .  1196ac5: MOVQ $0x0, 0x6f8(SP)	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:119</span>
+                   .     44.55s  1196ad1: NOPL	                                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:119</span>
+                   .      120ms  1196ad2: CALL runtime.deferreturn(SB)	                    <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:119</span>
+                   .          .  1196ad7: MOVQ 0x6b8(SP), BP	                              <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:119</span>
+                   .          .  1196adf: ADDQ $0x6c0, SP	                                 <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:119</span>
+                   .          .  1196ae6: RET	                                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:119</span>
+</span>
+<span class="line">    120</span> <span class="nop">           .          . } </span>
+<span class="line">    121</span> <span class="nop">           .          .  </span>
+<span class="line">    122</span> <span class="nop">           .          . var ErrMissingNewline = errors.New("missing newline terminating write") </span>
+<span class="line">    123</span> <span class="nop">           .          .  </span>
+<span class="line">    124</span> <span class="nop">           .          . func (gl *Client) messageID() (id [8]byte) { </span>
+</pre>
+<h1>github.com/PermissionData/log/graylog.(*Client).Write.func1</h1>/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go
+<pre onclick="pprof_toggle_asm(event)">  Total:           0     44.55s (flat, cum) 29.27%
+<span class="line">     71</span> <span class="nop">           .          . 	if !bytes.HasSuffix(p, []byte("\n")) { </span>
+<span class="line">     72</span> <span class="nop">           .          . 		return 0, ErrMissingNewline </span>
+<span class="line">     73</span> <span class="nop">           .          . 	} </span>
+<span class="line">     74</span> <span class="nop">           .          .  </span>
+<span class="line">     75</span> <span class="nop">           .          . 	gl.writeMux.Lock() </span>
+<span class="line">     76</span> <span class="deadsrc">           .          . 	defer func() { </span><span class="asm">                   .          .  1196db0: GS MOVQ GS:0x8a0, CX	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:76</span>
+                   .          .  1196db9: CMPQ 0x10(CX), SP	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:76</span>
+                   .          .  1196dbd: JBE 0x1196e2c	                                   <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:76</span>
+                   .          .  1196dbf: SUBQ $0x28, SP	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:76</span>
+                   .          .  1196dc3: MOVQ BP, 0x20(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:76</span>
+                   .          .  1196dc8: LEAQ 0x20(SP), BP	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:76</span>
+                   .          .  1196e2c: CALL runtime.morestack_noctxt(SB)	               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:76</span>
+                   .          .  1196e31: JMP github.com/PermissionData/log/graylog.(*Client).Write.func1(SB)	 <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:76</span>
+                   .          .  1196e36: INT $0x3	                                        <span class="disasmloc"></span>
+                   .          .  1196e37: INT $0x3	                                        <span class="disasmloc"></span>
+                   .          .  1196e38: INT $0x3	                                        <span class="disasmloc"></span>
+                   .          .  1196e39: INT $0x3	                                        <span class="disasmloc"></span>
+                   .          .  1196e3a: INT $0x3	                                        <span class="disasmloc"></span>
+                   .          .  1196e3b: INT $0x3	                                        <span class="disasmloc"></span>
+                   .          .  1196e3c: INT $0x3	                                        <span class="disasmloc"></span>
+                   .          .  1196e3d: INT $0x3	                                        <span class="disasmloc"></span>
+                   .          .  1196e3e: INT $0x3	                                        <span class="disasmloc"></span>
+</span>
+<span class="line">     77</span> <span class="deadsrc">           .       10ms 		gl.buf.Reset() </span><span class="asm">                   .          .  1196dcd: MOVQ 0x30(SP), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:77</span>
+                   .          .  1196dd2: TESTB AL, 0(AX)	                                 <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:77</span>
+                   .          .  1196dd4: LEAQ 0x48(AX), CX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:77</span>
+                   .          .  1196dd8: MOVQ CX, 0x18(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:77</span>
+                   .          .  1196ddd: MOVQ CX, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:77</span>
+                   .       10ms  1196de1: CALL bytes.(*Buffer).Reset(SB)	                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:77</span>
+</span>
+<span class="line">     78</span> <span class="deadsrc">           .       90ms 		gl.zip.Reset(&amp;gl.buf) </span><span class="asm">                   .          .  1196de6: MOVQ 0x30(SP), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:78</span>
+                   .          .  1196deb: MOVQ 0x40(AX), CX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:78</span>
+                   .          .  1196def: MOVQ CX, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:78</span>
+                   .          .  1196df3: LEAQ 0x1786e6(IP), CX	                           <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:78</span>
+                   .          .  1196dfa: MOVQ CX, 0x8(SP)	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:78</span>
+                   .          .  1196dff: MOVQ 0x18(SP), CX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:78</span>
+                   .          .  1196e04: MOVQ CX, 0x10(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:78</span>
+                   .       90ms  1196e09: CALL compress/gzip.(*Writer).Reset(SB)	          <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:78</span>
+</span>
+<span class="line">     79</span> <span class="deadsrc">           .     44.45s 		gl.writeMux.Unlock() </span><span class="asm">                   .          .  1196e0e: MOVQ 0x30(SP), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:79</span>
+                   .          .  1196e13: TESTB AL, 0(AX)	                                 <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:79</span>
+                   .          .  1196e15: ADDQ $0x34, AX	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:79</span>
+                   .          .  1196e19: MOVQ AX, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:79</span>
+                   .     44.45s  1196e1d: CALL sync.(*Mutex).Unlock(SB)	                   <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:79</span>
+</span>
+<span class="line">     80</span> <span class="deadsrc">           .          . 	}() </span><span class="asm">                   .          .  1196e22: MOVQ 0x20(SP), BP	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:80</span>
+                   .          .  1196e27: ADDQ $0x28, SP	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:80</span>
+                   .          .  1196e2b: RET	                                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:80</span>
+</span>
+<span class="line">     81</span> <span class="nop">           .          . 	n, err := gl.zip.Write(bytes.TrimFunc(p, unicode.IsSpace)) </span>
+<span class="line">     82</span> <span class="nop">           .          . 	gl.zip.Close() </span>
+<span class="line">     83</span> <span class="nop">           .          . 	if err != nil &amp;&amp; err != io.EOF { </span>
+<span class="line">     84</span> <span class="nop">           .          . 		return 0, err </span>
+<span class="line">     85</span> <span class="nop">           .          . 	} </span>
+</pre>
+<h1>github.com/PermissionData/log/graylog.(*Client).messageID</h1>/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go
+<pre onclick="pprof_toggle_asm(event)">  Total:        20ms       90ms (flat, cum) 0.059%
+<span class="line">    119</span> <span class="nop">           .          . 	return n, nil </span>
+<span class="line">    120</span> <span class="nop">           .          . } </span>
+<span class="line">    121</span> <span class="nop">           .          .  </span>
+<span class="line">    122</span> <span class="nop">           .          . var ErrMissingNewline = errors.New("missing newline terminating write") </span>
+<span class="line">    123</span> <span class="nop">           .          .  </span>
+<span class="line">    124</span> <span class="deadsrc">        10ms       10ms func (gl *Client) messageID() (id [8]byte) { </span><span class="asm">                   .          .  1196cc0: GS MOVQ GS:0x8a0, CX	                            <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:124</span>
+                10ms       10ms  1196cc9: CMPQ 0x10(CX), SP	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:124</span>
+                   .          .  1196ccd: JBE 0x1196d99	                                   <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:124</span>
+                   .          .  1196cd3: SUBQ $0x30, SP	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:124</span>
+                   .          .  1196cd7: MOVQ BP, 0x28(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:124</span>
+                   .          .  1196cdc: LEAQ 0x28(SP), BP	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:124</span>
+                   .          .  1196ce1: MOVQ $0x0, 0x40(SP)	                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:124</span>
+                   .          .  1196cf1: LEAQ 0x40(SP), CX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:124</span>
+                   .          .  1196d99: CALL runtime.morestack_noctxt(SB)	               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:124</span>
+                   .          .  1196d9e: JMP github.com/PermissionData/log/graylog.(*Client).messageID(SB)	 <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:124</span>
+                   .          .  1196da3: INT $0x3	                                        <span class="disasmloc"></span>
+                   .          .  1196da4: INT $0x3	                                        <span class="disasmloc"></span>
+                   .          .  1196da5: INT $0x3	                                        <span class="disasmloc"></span>
+                   .          .  1196da6: INT $0x3	                                        <span class="disasmloc"></span>
+                   .          .  1196da7: INT $0x3	                                        <span class="disasmloc"></span>
+                   .          .  1196da8: INT $0x3	                                        <span class="disasmloc"></span>
+                   .          .  1196da9: INT $0x3	                                        <span class="disasmloc"></span>
+                   .          .  1196daa: INT $0x3	                                        <span class="disasmloc"></span>
+                   .          .  1196dab: INT $0x3	                                        <span class="disasmloc"></span>
+                   .          .  1196dac: INT $0x3	                                        <span class="disasmloc"></span>
+                   .          .  1196dad: INT $0x3	                                        <span class="disasmloc"></span>
+                   .          .  1196dae: INT $0x3	                                        <span class="disasmloc"></span>
+</span>
+<span class="line">    125</span> <span class="deadsrc">           .          . 	copy(id[0:4], gl.instanceID[0:4]) </span><span class="asm">                   .          .  1196cea: MOVQ 0x38(SP), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:125</span>
+                   .          .  1196cef: TESTB AL, 0(AX)	                                 <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:125</span>
+                   .          .  1196cf6: MOVQ CX, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:125</span>
+                   .          .  1196cfa: MOVQ AX, 0x8(SP)	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:125</span>
+                   .          .  1196cff: MOVQ $0x4, 0x10(SP)	                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:125</span>
+                   .          .  1196d08: CALL runtime.memmove(SB)	                        <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:125</span>
+                   .          .  1196d59: MOVQ $0x4, AX	                                   <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:125</span>
+</span>
+<span class="line">    126</span> <span class="deadsrc">           .       30ms 	gl.countMux.Lock() </span><span class="asm">                   .          .  1196d0d: MOVQ 0x38(SP), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:126</span>
+                   .          .  1196d12: LEAQ 0x28(AX), CX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:126</span>
+                   .          .  1196d16: MOVQ CX, 0x20(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:126</span>
+                   .          .  1196d1b: MOVQ CX, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:126</span>
+                   .       30ms  1196d1f: CALL sync.(*Mutex).Lock(SB)	                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:126</span>
+</span>
+<span class="line">    127</span> <span class="deadsrc">           .          . 	gl.messageCount++ </span><span class="asm">                   .          .  1196d24: MOVQ 0x38(SP), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:127</span>
+                   .          .  1196d29: MOVL 0x30(AX), CX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:127</span>
+                   .          .  1196d2c: INCL CX	                                         <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:127</span>
+                   .          .  1196d2e: MOVL CX, 0x30(AX)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:127</span>
+</span>
+<span class="line">    128</span> <span class="deadsrc">           .          . 	count := make([]byte, 4) </span><span class="asm">                   .          .  1196d31: MOVL $0x0, 0x1c(SP)	                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:128</span>
+                   .          .  1196d69: LEAQ 0x1c(SP), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:128</span>
+</span>
+<span class="line">    129</span> <span class="deadsrc">        10ms       10ms 	binary.LittleEndian.PutUint32(count, gl.messageCount) </span><span class="asm">                   .          .  1196d39: MOVL 0x30(AX), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:129</span>
+                10ms       10ms  1196d3c: MOVB AL, 0x1c(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:129</span>
+                   .          .  1196d40: MOVL AX, CX	                                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:129</span>
+                   .          .  1196d42: SHRL $0x8, AX	                                   <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:129</span>
+                   .          .  1196d45: MOVB AL, 0x1d(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:129</span>
+                   .          .  1196d49: MOVL CX, AX	                                     <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:129</span>
+                   .          .  1196d4b: SHRL $0x10, CX	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:129</span>
+                   .          .  1196d4e: MOVB CL, 0x1e(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:129</span>
+                   .          .  1196d52: SHRL $0x18, AX	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:129</span>
+                   .          .  1196d55: MOVB AL, 0x1f(SP)	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:129</span>
+</span>
+<span class="line">    130</span> <span class="deadsrc">           .       20ms 	copy(id[4:8], count) </span><span class="asm">                   .          .  1196d60: LEAQ 0x40(SP)(AX*1), AX	                         <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:130</span>
+                   .          .  1196d65: MOVQ AX, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:130</span>
+                   .          .  1196d6e: MOVQ AX, 0x8(SP)	                                <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:130</span>
+                   .          .  1196d73: MOVQ $0x4, 0x10(SP)	                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:130</span>
+                   .       20ms  1196d7c: CALL runtime.memmove(SB)	                        <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:130</span>
+</span>
+<span class="line">    131</span> <span class="deadsrc">           .       20ms 	gl.countMux.Unlock() </span><span class="asm">                   .          .  1196d81: MOVQ 0x20(SP), AX	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:131</span>
+                   .          .  1196d86: MOVQ AX, 0(SP)	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:131</span>
+                   .       20ms  1196d8a: CALL sync.(*Mutex).Unlock(SB)	                   <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:131</span>
+</span>
+<span class="line">    132</span> <span class="deadsrc">           .          . 	return id </span><span class="asm">                   .          .  1196d8f: MOVQ 0x28(SP), BP	                               <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:132</span>
+                   .          .  1196d94: ADDQ $0x30, SP	                                  <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:132</span>
+                   .          .  1196d98: RET	                                             <span class="disasmloc">/Users/jallen/mycode/src/github.com/PermissionData/log/graylog/writer.go:132</span>
+</span>
+<span class="line">    133</span> <span class="nop">           .          . } </span>
+<span class="line">    134</span> <span class="nop">           .          .  </span>
+<span class="line">    135</span> <span class="nop">           .          . const ( </span>
+<span class="line">    136</span> <span class="nop">           .          . 	mtuSize        = 1500 </span>
+<span class="line">    137</span> <span class="nop">           .          . 	maxChunkSize   = 1420 // based on MTU of 1500 and chunked GELF over UDP </span>
+</pre>
+
+
+
+
+</body></html>

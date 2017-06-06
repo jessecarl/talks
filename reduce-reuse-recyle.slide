@@ -1,0 +1,198 @@
+Reduce, Reuse, Recycle
+or How and When to Jump in the Pool
+
+Jesse Allen
+Software Engineer, Permission Data
+@jessecarl
+
+: Hi. As this title slide so obviously points out, I'm Jesse Allen, a software engineer at Permission Data. The rest of this slide is less clear. I'll be talking about optimizing some code that sees heavy use.
+
+* The Problem
+
+: A few months ago, I had the task of creating a 15th logging standard. The structured logging package itself is little more than passing a map to a json encoder. Of course, we need to write those bytes somewhere.
+
+* The Problem
+
+- individual log messages
+- gzipped
+- chunked
+- custom headers (count, sequence, magic bytes, etc)
+- over UDP
+
+: We chose to write zipped payloads in chunks over UDP to a process that will route these messages to a few destinations. Those are the specifications. We use this structured logging for business events, so it sees a lot of traffic.
+
+* The Problem
+
+- high volume
+- high concurrency
+- high speed
+
+: That translates to these constraints. It must be able to handle a high volume of message; it must handle them concurrently; it must do them very quickly.
+
+* Naïve Solution
+
+: That brings us to our naïve implementation – contrived entirely for this presentation.
+
+* Naïve Solution
+
+.code reduce-reuse-recycle/naive.go /START 1 OMIT/,/END 1 OMIT/
+
+* Naïve Solution
+
+.code reduce-reuse-recycle/naive.go /START 2 OMIT/,/END 2 OMIT/
+
+* How did we do?
+
+.code reduce-reuse-recycle/naive.timing.txt
+
+: That seems pretty expensive.
+
+* How did we do?
+
+.image reduce-reuse-recycle/naive-performance.png _ 900
+
+* Rethinking our Solution
+
+Let's make Captain Planet proud and put the three R's to work.
+
+- Reduce
+- Reuse
+- Recycle
+
+* Sidebar
+What would this guy think?
+.image reduce-reuse-recycle/geneamdahl-580x358.jpeg 358 580
+.image reduce-reuse-recycle/amdahl.svg 75 _
+
+
+* Reduce
+* Reduce
+
+- allocating byte arrays
+- copying byte slices
+- other low-hanging fruit
+
+* Reduce • a quick code review
+
+.code reduce-reuse-recycle/naive.go /START 1 OMIT/,/END 1 OMIT/ HLreview
+
+* Reduce • a quick code review
+
+.code reduce-reuse-recycle/naive.go /START 2 OMIT/,/END 2 OMIT/ HLreview
+
+* Reduce • fixing the obvious
+
+.code reduce-reuse-recycle/reduce.go /START 1 OMIT/,/END 1 OMIT/ HLupdated
+
+* Reduce • fixing the obvious
+
+.code reduce-reuse-recycle/reduce.go /START 2 OMIT/,/END 2 OMIT/ HLupdated
+
+* Reduce • did it work?
+
+Before:
+.code reduce-reuse-recycle/naive.timing.txt
+After:
+.code reduce-reuse-recycle/reduce.timing.txt
+
+* Reduce • did it work?
+
+.image reduce-reuse-recycle/reduce-performance.png _ 900
+
+* Reduce • profile it
+
+Do some CPU profiling.
+
+.link reduce-reuse-recycle/reduce.html weblist
+.link reduce-reuse-recycle/reduce.cpu.svg graph
+
+* Reuse
+* Reuse
+
+Can we reuse the same underlying storage for these expensive operations?
+
+.link https://golang.org/pkg/bytes/#Buffer.Reset `bytes.Buffer`
+.link https://golang.org/pkg/compress/gzip/#Writer.Reset `gzip.Writer`
+
+* Reuse
+
+.code reduce-reuse-recycle/reuse.go /START 1 OMIT/,/END 1 OMIT/ HLupdated
+.code reduce-reuse-recycle/reuse.go /START 2 OMIT/,/END 2 OMIT/ HLupdated
+
+* Reuse
+
+.code reduce-reuse-recycle/reuse.go /START 3 OMIT/,/END 3 OMIT/ HLupdated
+
+* Reuse • did that work?
+
+Before:
+.code reduce-reuse-recycle/reduce.timing.txt
+After:
+.code reduce-reuse-recycle/reuse.timing.txt
+
+* Reuse • did that work?
+
+.image reduce-reuse-recycle/reuse-performance.png _ 900
+
+* Reuse • did that work?
+
+.link reduce-reuse-recycle/reuse.cpu.svg CPU
+.link reduce-reuse-recycle/reuse.mux.svg Mutex
+.link reduce-reuse-recycle/reuse.html weblist
+
+: 10x improvement? Kinda…
+
+* Recycle
+* Recycle
+
+Recycling resources for concurrency and better garbage collection
+
+* Recycle
+
+.code reduce-reuse-recycle/recycle.go /START 1 OMIT/,/END 1 OMIT/ HLupdated
+.code reduce-reuse-recycle/recycle.go /START 3 OMIT/,/END 3 OMIT/ HLupdated
+
+* Recycle
+
+.code reduce-reuse-recycle/recycle.go /START 5 OMIT/,/END 5 OMIT/ HLupdated
+.code reduce-reuse-recycle/recycle.go /START 4 OMIT/,/END 4 OMIT/ HLupdated
+
+* Recycle
+
+.code reduce-reuse-recycle/recycle.go /START 2 OMIT/,/END 2 OMIT/ HLupdated
+.code reduce-reuse-recycle/recycle.go /START 6 OMIT/,/END 6 OMIT/ HLupdated
+
+* Recycle • did that work?
+
+Before:
+.code reduce-reuse-recycle/reuse.timing.txt
+After:
+.code reduce-reuse-recycle/recycle.timing.txt
+
+* Recycle • did that work?
+
+.image reduce-reuse-recycle/recycle-performance.png _ 900
+
+* Recycle • did that work?
+
+.link reduce-reuse-recycle/recycle.cpu.svg CPU
+.link reduce-reuse-recycle/recycle.mux.svg Mutex
+.link reduce-reuse-recycle/recycle.html weblist
+
+: 20% speedup
+
+* Conclusions
+
+: Consider the constraints of the system. Premature optimization is evil, but not designing well is worse.
+
+
+* Further Questions
+- What of these approaches had a significant impact on performance?
+- When do these approaches start to pay for themselves over the naïve approach?
+- What could we do to speed this up even more?
+
+
+* Acknowledgements
+- Rick Richardson, who worked out this design with me and wrote what's on the other end of the UDP connection
+- Ben Johnson, whose walkthroughs made working with bytes better
+- The Go team authors who put `sync.Pool` in the standard package, and used it in the `fmt` package
